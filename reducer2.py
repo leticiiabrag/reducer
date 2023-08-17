@@ -13,7 +13,7 @@ result = {'palavras_distintas': None,
           'top_10': None,
           'histograma': None}
 
-punctuation_regex = re.compile(r"[,.?!;:()\[\]{}-]")
+letter_only_regex = re.compile(r"[A-Za-z]+")
 counting = dict()
 
 for word in sys.stdin:
@@ -21,7 +21,7 @@ for word in sys.stdin:
 
     word, count = word.split('\t', 1)
     word = re.sub(
-        punctuation_regex, '', word
+        letter_only_regex, '', word
         ).replace("'", '').replace('"', '')
     try:
         quantity = int(count)
