@@ -21,11 +21,9 @@ for word in sys.stdin:
     word = word.strip().lower()
 
     word, count = word.split('\t', 1)
-    '''
     word = re.sub(
         punctuation_regex, '', word
         ).replace("'", '').replace('"', '')
-        '''
     try:
         quantity = int(count)
         if word in counting:
