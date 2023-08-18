@@ -13,8 +13,9 @@ result = {'palavras_distintas': None,
           'top_10': None,
           'histograma': None}
 
-punctuation_regex = re.compile(r"[,.?!;:()\[\]{}-]")
+
 letter_only_regex = re.compile(r"^[A-Za-z]+$")
+punctuation_regex = re.compile(r"[,.?!;:()\[\]{}-]")
 counting = dict()
 
 for word in sys.stdin:
@@ -26,9 +27,8 @@ for word in sys.stdin:
         ).replace("'", '').replace('"', '')
     try:
         quantity = int(count)
-        if word in counting:
-            if letter_only_regex.match(word):
-                counting[word] += quantity
+        if word in counting and letter_only_regex.match(word):
+            counting[word] += quantity
         else:
             counting[word] = quantity
     except ValueError:
