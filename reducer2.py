@@ -27,8 +27,9 @@ for word in sys.stdin:
         ).replace("'", '').replace('"', '')
     try:
         quantity = int(count)
-        if word in counting and letter_only_regex.match(word):
-            counting[word] += quantity
+        if word in counting:
+            if letter_only_regex.match(word):
+                counting[word] += quantity
         else:
             counting[word] = quantity
     except ValueError:
